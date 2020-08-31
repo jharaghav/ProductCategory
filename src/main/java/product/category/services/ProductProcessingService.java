@@ -1,5 +1,6 @@
 package product.category.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import product.category.entity.Products;
@@ -12,8 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ProductProcessingService {
-
 
     @Autowired
     private ProductRepository productRepository;
@@ -31,11 +32,11 @@ public class ProductProcessingService {
                 productCategories.add(products.get().getCategory().getCategoryId());
             }
         });
-        System.out.println("Total cost : " + totalCost(productCosts));
-        System.out.println("Total Sales Tax : " + totalSalesTax(productCosts, productCategories));
+        log.info("Total cost : {}", totalCost(productCosts));
+        log.info("Total Sales Tax : {}", totalSalesTax(productCosts, productCategories));
     }
 
-    private Long totalCost(List<Long> productCosts) {
+    public Long totalCost(List<Long> productCosts) {
         Long sum = 0L;
         if (!productCosts.isEmpty()) {
             sum = productCosts.stream().mapToLong(Long::longValue).sum();
@@ -43,7 +44,7 @@ public class ProductProcessingService {
         return sum;
     }
 
-    private Long totalSalesTax(List<Long> productCosts, List<String> productCategories) {
+    public Long totalSalesTax(List<Long> productCosts, List<String> productCategories) {
         Long totalSalesTax = 0L;
         for (int i = 0; i < productCategories.size(); i++) {
             Category category = categoryFactory.getSalesTaxByCategoryType(productCategories.get(i));

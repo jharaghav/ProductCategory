@@ -1,10 +1,9 @@
 package product.category.model;
 
-public class  CategoryC implements Category
-{
-    @Override
-    public int getAmount(){}
+public class CategoryC implements Category {
 
     @Override
-    public int getTaxLevy(){}
+    public Long getTaxLevyCost(Long cost) {
+        return 0L;
+    }
 }

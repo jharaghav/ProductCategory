@@ -36,7 +36,7 @@ public class ProductProcessingServiceTest {
     @Before
     public void setUp() {
         Mockito.when(productRepository.findById("Pr01")).thenReturn(getProducts());
-        Mockito.when(categoryFactory.getSalesTaxByCategoryType("CATEGORYA")).thenReturn(new CategoryA());
+        Mockito.when(categoryFactory.getCategory("CATEGORYA")).thenReturn(new CategoryA());
     }
 
     @Test

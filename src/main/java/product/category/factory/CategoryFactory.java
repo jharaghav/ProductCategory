@@ -10,7 +10,7 @@ import product.category.utilities.CategoryTypeConstants;
 @Component
 public class CategoryFactory {
 
-    public Category getSalesTaxByCategoryType(String categoryType) {
+    public Category getCategory(String categoryType) {
         if (categoryType.equalsIgnoreCase(CategoryTypeConstants.CATEGORYA)) {
             return new CategoryA();
         }

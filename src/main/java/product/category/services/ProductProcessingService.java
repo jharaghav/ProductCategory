@@ -47,7 +47,7 @@ public class ProductProcessingService {
     public Long totalSalesTax(List<Long> productCosts, List<String> productCategories) {
         Long totalSalesTax = 0L;
         for (int i = 0; i < productCategories.size(); i++) {
-            Category category = categoryFactory.getSalesTaxByCategoryType(productCategories.get(i));
+            Category category = categoryFactory.getCategory(productCategories.get(i));
             totalSalesTax += category.getTaxLevyCost(productCosts.get(i));
         }
         return totalSalesTax;
